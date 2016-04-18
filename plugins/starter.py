@@ -41,6 +41,7 @@ def process_message(data):
 
     open_markets = match_text(data['text'])
     if open_markets is not None:
-        outputs.append([data['channel'], open_markets])
+        formated = u", ".join(open_markets)
+        outputs.append([data['channel'], formated])
 
 
