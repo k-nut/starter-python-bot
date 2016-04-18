@@ -24,10 +24,10 @@ def process_message(data):
     if matches:
         location = matches.get('location')
         if location.lower() in SUPPORTED_CITIES:
-            message = "https://wo-ist-markt.de/%s"
+            message = "https://wo-ist-markt.de/#%s"
             outputs.append([data['channel'], message % location.lower()])
         else:
             message = u"\n".join([u"Es gibt keinen Markt in %s. Füge ihn doch hinzu!",
-                                 u"https://github.com/wo-ist-markt/wo-ist-markt.github.io"
-                                ])
+                                  u"https://github.com/wo-ist-markt/wo-ist-markt.github.io"
+                                 ])
             outputs.append([data['channel'], message % location.lower()])
