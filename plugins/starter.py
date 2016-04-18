@@ -25,6 +25,9 @@ p_bot_help = re.compile("pybot[\s]*help")
 def process_message(data):
     logging.debug("process_message:data: {}".format(data))
 
+    if data['text'] == "Wo ist Markt?":
+        outputs.append([data['channel'], "https://wo-ist-markt.de"])
+
     if p_bot_hi.match(data['text']):
         outputs.append([data['channel'], "{}".format(random.choice(greetings))])
 
