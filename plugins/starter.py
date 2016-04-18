@@ -18,7 +18,8 @@ def process_message(data):
     logging.debug("process_message:data: {}".format(data))
     location_regex = re.compile(r"Wo ist Markt in (?P<location>\w+)\?")
 
-    matches = location_regex.match(data['text']).groupdict()
+    results = location_regex.match(data['text'])
+    matches = results.groupdict() if results else None
     if matches:
         location = matches.get('location')
         if location.lower() in [city.lower() for city in SUPPORTED_CITIES]:
