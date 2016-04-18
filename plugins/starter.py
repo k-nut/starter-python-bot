@@ -27,7 +27,7 @@ def process_message(data):
             message = "https://wo-ist-markt.de/%s"
             outputs.append([data['channel'], message % location.lower()])
         else:
-            message = "\n".join(["Es gibt keinen Markt in %s. Füge ihn doch hinzu!",
-                                 "https://github.com/wo-ist-markt/wo-ist-markt.github.io"
-                                ]).encode("utf-8")
+            message = u"\n".join([u"Es gibt keinen Markt in %s. Füge ihn doch hinzu!",
+                                 u"https://github.com/wo-ist-markt/wo-ist-markt.github.io"
+                                ])
             outputs.append([data['channel'], message % location.lower()])
