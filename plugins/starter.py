@@ -2,6 +2,8 @@
 
 import re
 import logging
+
+from opening import match_text
 crontable = []
 outputs = []
 typing_sleep = 0
@@ -36,4 +38,9 @@ def process_message(data):
         markets = ", ".join(SUPPORTED_CITIES)
         combined = message % markets
         outputs.append([data['channel'], combined])
+
+    open_markets = match_text(data['text'])
+    if open_markets is not None:
+        outputs.append([data['channel'], open_markets])
+
 
