@@ -11,8 +11,6 @@ SUPPORTED_CITIES = ["Berlin", "Erlangen", "Essen",
                     "Karlsruhe", "Köln", "Leipzig",
                     "Moers", "München", "Neu-Ulm",
                     "Paderborn", "Ulm", "Wuppertal"]
-SUPPORTED_CITIES = [city.lower() for city in SUPPORTED_CITIES]
-
 
 
 def process_message(data):
@@ -23,7 +21,7 @@ def process_message(data):
     matches = location_regex.match(data['text']).groupdict()
     if matches:
         location = matches.get('location')
-        if location.lower() in SUPPORTED_CITIES:
+        if location.lower() in [city.lower() for city in SUPPORTED_CITIES]:
             message = "https://wo-ist-markt.de/#%s"
             outputs.append([data['channel'], message % location.lower()])
         else:
@@ -31,3 +29,10 @@ def process_message(data):
                                   u"https://github.com/wo-ist-markt/wo-ist-markt.github.io"
                                  ])
             outputs.append([data['channel'], message % location.lower()])
+
+    if data['text'] == "Wo gibts Markt?":
+        message = u"Es gibt Märkte in %s"
+        markets = ", ".join(SUPPORTED_CITIES)
+        combined = message % markets
+        outputs.append([data['channel'], combined])
+
