@@ -7,10 +7,10 @@ outputs = []
 typing_sleep = 0
 
 
-SUPPORTED_CITIES = ["Berlin", "Erlangen", "Essen",
-                    "Karlsruhe", "Köln", "Leipzig",
-                    "Moers", "München", "Neu-Ulm",
-                    "Paderborn", "Ulm", "Wuppertal"]
+SUPPORTED_CITIES = [u"Berlin", u"Erlangen", u"Essen",
+                    u"Karlsruhe", u"Köln", u"Leipzig",
+                    u"Moers", u"München", u"Neu-Ulm",
+                    u"Paderborn", u"Ulm", u"Wuppertal"]
 
 
 def process_message(data):
